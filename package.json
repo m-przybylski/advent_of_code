@@ -1,0 +1,15 @@
+{
+  "name": "advent_of_code",
+  "description": "just for fun try to solve advent of code https://adventofcode.com/",
+  "authors": "author",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "this.toString()",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}

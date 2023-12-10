@@ -1,5 +1,5 @@
 from itertools import cycle
-import math
+from math import lcm
 
 
 input = "input/day8"
@@ -58,7 +58,7 @@ def part1():
     for _ in x:
         count +=1
 
-    print(count)
+    return count
 
 def part2():
     def solve(current):
@@ -69,14 +69,12 @@ def part2():
 
     path, map = parseData()
     starts = [k for k in map.keys() if k[-1] == "A"]
+    # Because A -> Z = x and Z -> Z = x
 
-    return math.lcm(*[solve(s) for s in starts])
+    return lcm(*[solve(s) for s in starts])
 
 # 11309
-# print(part1())
+print(part1())
 
 # 13740108158591
-# print(part2())
-
-for i in range(13740108158591):
-    pass
+print(part2())

@@ -181,7 +181,7 @@ def partTwo():
     print(len(map) * len(map[0]) - len(outside | loop))
 
 # 6768
-# partOne()
+partOne()
 
-# 6768
+# 351
 partTwo()

@@ -1,22 +1,12 @@
 input = "day1"
 
-map = open(input, "r").read()
+floor_map = open(input, "r").read()
 
-up = 0
-down = 0
-
-for ch in map:
-    if ch == "(":
-        up +=1
-    elif ch == ")":
-        down += 1
-
-print(up - down)
-
+print(floor_map.count("(") - floor_map.count(")"))
 
 level = 0
 count = 0
-for ch in map:
+for ch in floor_map:
     count +=1
     if ch == "(":
         level += 1

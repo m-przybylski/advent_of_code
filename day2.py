@@ -1,20 +1,10 @@
 input = "day2"
 
-reports = []
-for report in open(input, "r").readlines(): 
-  reports.append(list(map(int, report.split())))
-
-def pairwise(iterable):
-    iterator = iter(iterable)
-    a = next(iterator, None)
-
-    for b in iterator:
-        yield a, b
-        a = b
+reports = [list(map(int, report.split())) for report in open(input, "r").readlines()]
 
 def isSafe(report: list[int]) -> bool:
   wasDown = None
-  for x,y in pairwise(report):
+  for x,y in zip(report[1:], report):
     if (x == y):
        return False
 
@@ -31,16 +21,10 @@ def isSafe(report: list[int]) -> bool:
   return True
 
 def isSafeWithError(report: list[int]) -> bool:
-  if (isSafe(report)): return True
-
   for index in range(len(report)):
-    newReport = report.copy()
-    newReport.pop(index)
-    if (isSafe(newReport)): return True
+    if (isSafe(report[:index] + report[index + 1:])): return True
   
   return False
-  
-  
 
 def dayOne():
   count = 0

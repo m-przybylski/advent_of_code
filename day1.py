@@ -1,40 +1,14 @@
 input = "day1"
 
-location_pairs = open(input, "r").readlines()
-left = []
-right = []
-for locations in location_pairs:
-  l,r = locations.split()
-  left.append(int(l))
-  right.append(int(r))
+locations = list(map(list, zip(*[list(map(int, line.split())) for line in open(input, "r").readlines()])))
+for locationIds in locations: locationIds.sort()
 
 def partOne():
-  left.sort()
-  right.sort()
-
-  distance = 0
-  for i in range(len(left)):
-    distance += abs(right[i] - left[i])
-
-  print(distance)
+  print(sum(abs(left - right)for left, right in zip(*locations)))
 
 def partTwo():
-  # Array is sorted
-  def count_num_in_array(num_to_find, array):
-    count = 0
-    for i in range(len(array)):
-      if array[i] == num_to_find:
-        count += 1
-      if array[i] > num_to_find:
-        break
-    return count
-
-  similarity_score = 0
-  for i in range(len(left)):
-    num_to_find = left[i]
-    similarity_score += num_to_find * count_num_in_array(num_to_find, right)
-  print(similarity_score)
-
+  left, right = locations
+  print(sum(l * right.count(l) for l in left))
 
 partOne()
 partTwo()

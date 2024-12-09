@@ -59,10 +59,15 @@ def partTwo():
   for file in reversed(files.keys()):
     file_id, block_id, file_length = files[file]
     for space_id, (space_block, space_length) in enumerate(spaces):
-      if space_block >= block_id: break
+      if space_block >= block_id: 
+        spaces = spaces[:space_id]
+        break
       if space_length >= file_length:
         files[file] = (file_id, space_block, file_length)
-        spaces[space_id] = (space_block + file_length, space_length - file_length)
+        if space_length == file_length:
+          spaces.pop(space_id)
+        else:
+          spaces[space_id] = (space_block + file_length, space_length - file_length)
         break
 
 
